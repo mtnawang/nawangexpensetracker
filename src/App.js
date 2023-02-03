@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import Todo from './components/ExpenseTracker'
+import expenses from './components/data';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Expense Tracker</h1>
+
+      {expenses.map((info) => {
+        return <Todo name={info.name} price={info.price}/>
+      })}
+      <h2>TOTAL: &nbsp; 
+      {expenses.reduce((total,value) => {
+                return total + value.price;
+            }, 0)}
+      </h2> 
     </div>
   );
 }
